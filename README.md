@@ -1,4 +1,4 @@
-# perceptron
+# Perceptron
 Implementação do perceptron em linguagem C
 
 
