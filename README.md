@@ -8,15 +8,15 @@ Dependências:
 
 Passos)
 
-Para ambientes que utilizem o gerenciador apt
+Para ambientes que utilizem o gerenciador apt:
 
   apt-get install gsl-bin libgsl-dev libgsl2
   
-Para compilar linkando as bibliotecas necessárias
+Para compilar linkando as bibliotecas necessárias:
 
   gcc -o main Main.c -lgsl -lgslcblas -lm
 
-Para executar
+Para executar:
 
  ./main
 
