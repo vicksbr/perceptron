@@ -33,7 +33,7 @@
  */
 int main(int argc, char** argv) {
     //char* diretorio_base = (char*) malloc(sizeof (char));
-    char* diretorio_base = "/home/puzzi/Templates/perceptron/RNA_PERCEPTRON_EXEMPLO/Base_Exemplo.dat";
+    char* diretorio_base = "Base_Exemplo.dat";
 
     int numEpocas = 0;
     int j = 0;
