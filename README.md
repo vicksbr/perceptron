@@ -14,8 +14,11 @@ Para ambientes que utilizem o gerenciador apt
   
 Para compilar linkando as bibliotecas necessárias
 
-  gcc -o teste Main.c -lgsl -lgslcblas -lm
+  gcc -o main Main.c -lgsl -lgslcblas -lm
 
+Para executar
+
+ ./main
 
 ########################################################################################
 
