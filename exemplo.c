@@ -1,3 +1,6 @@
+// Treinamento de reconhecimento de uma função AND
+
+
 #include <stdio.h>
 
 #define ENTRADA 2
@@ -18,6 +21,7 @@ int main()
 	int e1, e2;
 
 	treinarRede(sinapses);
+	
 	while(1){
 		printf("Entrada 1 .................: ");
 		scanf("%d", &e1);
@@ -29,7 +33,7 @@ int main()
 	return 0;
 }
 
-float soma(int e1, int e2, float* sinapses)
+float soma(int e1, int e2, float *sinapses)
 {
 	float resultado = 0;
 	resultado = resultado + sinapses[0] * VLR_BIAS;
@@ -46,20 +50,24 @@ int degrau(float s)
 
 float regraDelta(int erro, int entrada, float sinapse)
 {
-	printf("erro: %d - Entrada: %d - SAIDA: %f\n", erro, entrada, (sinapse + (TX_APR * erro * entrada)));
+	printf("erro: %d | Entrada: %d | SAIDA: %f\n", erro, entrada, (sinapse + (TX_APR * erro * entrada)));
 	return (sinapse + (TX_APR * erro * entrada));
 	
 }
 
 void treinarRede(float * sinapses)
 {
-	int i, j, resposta, erro;
+	int i, j, erro;
+	
+	float resposta;
+
 	// NUMERO DE EPOCAS
 	for(i = 0; i < EPOCAS; i++){
 		// CONJUNTO DE TREINAMENTOS
 		for(j = 0; j < QTD_DADOS_TREINAMENTOS; j++){
-			resposta = degrau(soma(dadosTreinamento[j][0], dadosTreinamento[j][1], sinapses));
+			resposta = degrau(soma(dadosTreinamento[j][0], dadosTreinamento[j][1], sinapses));			
 			erro = dadosTreinamento[j][2] - resposta;
+			printf("epoca=%d j=%d resposta=%f erro=%d pesos[%f,%f,%f]\n",i,j,resposta,erro,sinapses[0],sinapses[1],sinapses[2]);
 			if(erro){
 				sinapses[0] = regraDelta(erro, VLR_BIAS, sinapses[0]);
 				sinapses[1] = regraDelta(erro, dadosTreinamento[j][0], sinapses[1]);
@@ -67,8 +75,10 @@ void treinarRede(float * sinapses)
 			}
 		}
 	}
+	
 	printf("RESULTADO TREINAMENTO");
 	printf("w[bias] = %f\n", sinapses[0]);
 	printf("w[e1] = %f\n", sinapses[1]);
 	printf("w[e2] = %f\n", sinapses[2]);	
+
 }
